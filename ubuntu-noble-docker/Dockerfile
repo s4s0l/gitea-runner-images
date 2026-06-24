@@ -15,5 +15,10 @@ RUN add-apt-repository \
        "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
        $(lsb_release -cs) \
        stable"
-RUN apt-get update && apt-get remove moby-tini -y && apt-get install --no-install-recommends -y docker-ce docker-ce-cli containerd.io
-
+RUN apt-get update && apt-get remove -y moby-tini
+RUN apt-get update && apt-get install --no-install-recommends -y \
+       docker-ce \
+       docker-ce-cli \
+       containerd.io \
+       docker-buildx-plugin \
+       docker-compose-plugin
